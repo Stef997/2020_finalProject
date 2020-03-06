@@ -74,7 +74,7 @@ public class Main extends Application {
         hbox.getChildren().addAll(imageView1, imageView2, imageView3);
 
 
-
+        //To view question 1 output un comment below:
 //        Scene scene = new Scene(hbox);
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
@@ -128,6 +128,7 @@ public class Main extends Application {
 
 
         //Show primary stage
+        //To view question 2 output un comment below:
 //        Scene scene = new Scene(gridPane);
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
@@ -148,10 +149,11 @@ public class Main extends Application {
         pane.getChildren().addAll(mainCircle, circle[0], circle[1], circle[2], line1, line2, line3, text[0], text[1], text[2]);
 
         // Create a scene and place it in the stage
-        Scene scene = new Scene(pane, 400, 250);
-        primaryStage.setTitle("Assignment 1"); // Set the stage title
-        primaryStage.setScene(scene); // Place the scene in the stage
-        primaryStage.show(); // Display the stage
+        //To view question 3 output un comment below:
+//        Scene scene = new Scene(pane, 400, 250);
+//        primaryStage.setTitle("Assignment 1"); 
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
 
         circle[0].setOnMouseDragged(e -> {
             if (circle[0].contains(e.getX(), e.getY())) {
@@ -245,12 +247,11 @@ public class Main extends Application {
         HBox hBox1 = new HBox();
         hBox1.getChildren().addAll(text5, bartext, viewButton);
 
-
+        //To view question 4 output un comment below:
 //        GridPane gridPane1 = new GridPane();
 //        gridPane1.add(barChart, 0, 0);
 //        gridPane1.add(hBox1, 0,1);
 //        Scene scene = new Scene(gridPane1, 400, 400);
-//
 //        primaryStage.setTitle("Assignment 1");
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
@@ -280,7 +281,7 @@ public class Main extends Application {
 
     }
 
-
+    //setLines function
     private void setLines() {
         line1.setStartX(circle[0].getCenterX());
         line1.setStartY(circle[0].getCenterY());
