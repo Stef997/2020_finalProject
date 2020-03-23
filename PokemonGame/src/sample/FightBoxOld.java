@@ -2,30 +2,25 @@ package sample;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+import javafx.scene.text.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Random;
 
-public class FightBox {
+public class FightBoxOld {
 
     public Monster monster;
     public Monster target;
 
-    private Group group;
-
+    private StackPane mainPane = new StackPane();
     private GridPane skillPane = new GridPane();
+    private StackPane textPane = new StackPane();
     private FightBoxHandler fightBoxHandler;
     private Text monsterName;
 
@@ -34,18 +29,18 @@ public class FightBox {
 
     public Button skillButton[] = new Button[4];
 
-    public FightBox(Monster monster) throws FileNotFoundException {
+
+    public FightBoxOld(Monster monster) throws FileNotFoundException {
         //Monster used for the fight skill box
         this.monster = monster;
-        fightBoxHandler = new FightBoxHandler(this);
+        //fightBoxHandler = new FightBoxHandler(this);
         init();
         createTargetDummy();
     }
     private void createTargetDummy() throws FileNotFoundException {
-        int skillDamage[] = {5, 0, 0, 0};
+        int skillDamage[] = {0, 0, 0, 0};
         target = new Monster(skillDamage, 0, "Target Dummy");
     }
-
     private void init(){
 
         System.out.println("init ");
@@ -63,43 +58,33 @@ public class FightBox {
         skillButton[3].setOnAction(fightBoxHandler);
 
         //Maybe have power points so abilities can only be used x times
-        skillPane.add(skillButton[0], 0, 0);
-        skillPane.add(skillButton[1], 1, 0);
-        skillPane.add(skillButton[2], 0, 1);
-        skillPane.add(skillButton[3], 1, 1);
+        skillPane.add(skillButton[0], 1, 0);
+        skillPane.add(skillButton[1], 2, 0);
+        skillPane.add(skillButton[2], 1, 1);
+        skillPane.add(skillButton[3], 2, 1);
+       // skillPane.add(monsterName, 0, 0);
 
         skillPane.setHgap(25);
         skillPane.setVgap(15);
         skillPane.setPadding(new Insets(3,3,3,3));
         skillPane.setAlignment(Pos.CENTER_LEFT);
-
         monsterName = new Text(monster.getName() + " skills");
         monsterName.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         monsterName.setFill(Color.BLACK);
+;
+        textPane.getChildren().add(monsterName);
+        textPane.setAlignment(Pos.CENTER);
 
-        skillPane.setLayoutX(110);
-        skillPane.setLayoutY(45);
-        monsterName.setLayoutX(skillPane.getLayoutX());
-        monsterName.setLayoutY(30);
+        mainPane.getChildren().add(background);
+        mainPane.getChildren().add(skillPane);
+        mainPane.getChildren().add(textPane);
 
-        group = new Group(background, skillPane, monsterName);
-
-    }
-
-    public void cpuAttack(){
-        Random rand = new Random();
-
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNum = rand.nextInt((4));
-        System.out.println(randomNum);
-
-        int damage = target.getSkillDamage()[randomNum];
-        monster.setHP(monster.getHP() - damage);
-        System.out.println(target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
-                + monster.getName() + "(" + monster.getHP() + ")");
+        mainPane.setAlignment(Pos.BOTTOM_LEFT);
 
     }
-    public Group getGroup(){return group;}
+
+    public StackPane getMainPane(){
+        return this.mainPane;
+    }
 
 }

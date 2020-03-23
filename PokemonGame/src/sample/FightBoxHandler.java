@@ -6,12 +6,9 @@ import javafx.event.EventHandler;
 public class FightBoxHandler implements EventHandler<ActionEvent> {
 
     private FightBox fightBox;
-
-
     public FightBoxHandler(FightBox fightBox){
         this.fightBox = fightBox;
     }
-
     @Override
     public void handle(ActionEvent e) {
         if(e.getSource() == fightBox.skillButton[0]){
@@ -38,6 +35,6 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
             System.out.println(fightBox.monster.getName() + " did " + fightBox.monster.getSkillDamage()[3] + " damage to "
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")");
         }
-
+        fightBox.cpuAttack();
     }
 }

@@ -2,12 +2,10 @@ package sample;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 
 import java.io.FileNotFoundException;
 
-public class MonsterImageBox {
-
+public class MonsterImageBoxCopy {
     private Monster monster;
     private Monster target;
 
@@ -17,7 +15,8 @@ public class MonsterImageBox {
     private ImageView targetMonster = new ImageView();
     private MonsterInfoBox monsterInfoBox;
 
-    public MonsterImageBox(Monster monster, Monster target) throws FileNotFoundException {
+    public MonsterImageBoxCopy(Monster monster, Monster target) throws FileNotFoundException {
+
         this.monster = monster;
         this.target = target;
         init();
