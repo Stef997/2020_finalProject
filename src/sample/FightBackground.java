@@ -6,7 +6,7 @@ import javafx.scene.layout.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class FightBackground {
+public class gFightBackground {
     Image backgroundURL = new Image(new FileInputStream("background/Background_Attack-1.png.png"));
 
     BackgroundImage backgroundimage = new BackgroundImage(backgroundURL,
