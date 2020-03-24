@@ -16,18 +16,21 @@ public class Main extends Application {
 
         String skills[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
         int skillDamage[] = {10, 10, 5, 25};
+        Monster waterType = new Monster(skills, skillDamage, 45, "Water Starter", "water");
+        FightBox fb = new FightBox(waterType);
+        MonsterImageBox monsterImage = new MonsterImageBox(waterType, fb.target);
 
-        FightBox fb = new FightBox(new Monster(skills, skillDamage, 45, "Water Starter", "water"));
-        MonsterImageBox monsterImage = new MonsterImageBox(fb.monster, fb.target);
         FightBackground back = new FightBackground();
 
         BorderPane bp = new BorderPane();
+        StackPane sp = new StackPane();
         bp.setBackground(back.background);
 
         bp.setMinHeight(700);
         bp.setMinWidth(900);
-
-        bp.setCenter(monsterImage.getGroup());
+        sp.getChildren().add(monsterImage.getGroup());
+        sp.getChildren().add(fb.monsterInfoBox.getGroup());
+        bp.setCenter(sp);
         bp.setBottom(fb.getGroup());
 
 

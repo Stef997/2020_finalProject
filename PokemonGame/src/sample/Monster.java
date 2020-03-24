@@ -55,7 +55,7 @@ public class Monster {
         return this.monsterImage;
     }
     public int getHP(){
-        return this.HP;
+        return HP;
     }
     public int[] getSkillDamage(){
         return this.skillDamage;
