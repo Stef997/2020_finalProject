@@ -49,7 +49,7 @@ public class FightBoxOld {
         background.setFitHeight(150);
 
         for(int i = 0; i < skillButton.length; i++){
-            skillButton[i] = new Button(monster.getSkills()[i]);
+            skillButton[i] = new Button(monster.getSkills().get(i).getName());
         }
 
         skillButton[0].setOnAction(fightBoxHandler);
