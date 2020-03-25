@@ -30,7 +30,7 @@ public class FightBox implements Runnable{
     private FightBoxHandler fightBoxHandler;
     private Text monsterName;
     final private Image backImage = new Image(new FileInputStream("background/textbox.png"));
-    final private ImageViewl background = new ImageView();
+    final private ImageView background = new ImageView();
 
     public FightBox(Monster monster) throws FileNotFoundException {
         //Monster used for the fight skill box
