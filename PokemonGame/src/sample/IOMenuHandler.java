@@ -11,11 +11,11 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
     private IOMenu menu;
     public String currentFile;
     public final static int SOCKET_PORT_LOAD = 13267;
-    public final static int SOCKET_PORT_SAVE = 13268;
-    public final static String SERVER = "127.0.01";
+    public final static int SOCKET_PORT_SAVE = 13267;
+    public final static String SERVER = "127.0.0.1";
     public final static String File_to_send = "saves/monsterSave.txt";
     public final static String File_to_receive = "saves/monsterSave.txt";
-    public final static int FILE_SIZE = 3000;
+    public final static int FILE_SIZE = 6022386;
 
 
     public IOMenuHandler(IOMenu menu) {
