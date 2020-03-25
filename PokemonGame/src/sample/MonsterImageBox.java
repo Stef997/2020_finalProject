@@ -15,7 +15,6 @@ public class MonsterImageBox {
 
     private ImageView myMonster = new ImageView();
     private ImageView targetMonster = new ImageView();
-    private MonsterInfoBox monsterInfoBox;
 
     public MonsterImageBox(Monster monster, Monster target) throws FileNotFoundException {
         this.monster = monster;
@@ -24,7 +23,6 @@ public class MonsterImageBox {
     }
 
     private void init() throws FileNotFoundException {
-        monsterInfoBox = new MonsterInfoBox(monster, target);
         myMonster.setImage(monster.getMonsterImage());
         targetMonster.setImage(target.getMonsterImage());
         targetMonster.setFitHeight(150);
@@ -36,12 +34,7 @@ public class MonsterImageBox {
         myMonster.setFitWidth(150);
         myMonster.setLayoutX(0);
         myMonster.setLayoutY(-50);
-
-        Group infoBox = monsterInfoBox.getGroup();
-        infoBox.setLayoutX(150);
-        infoBox.setLayoutX(-300);
-
-        group = new Group(myMonster, targetMonster, monsterInfoBox.getGroup());
+        group = new Group(myMonster, targetMonster);
 
     }
 

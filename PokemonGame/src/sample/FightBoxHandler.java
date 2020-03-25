@@ -36,5 +36,7 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")");
         }
         fightBox.cpuAttack();
+        fightBox.monsterInfoBox.updateBar();
+        fightBox.monsterInfoBox.updateText();
     }
 }

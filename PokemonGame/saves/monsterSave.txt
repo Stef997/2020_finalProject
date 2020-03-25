@@ -1,0 +1,2 @@
+SKILL1, SKILL1, SKILL1, SKILL1, 10, 10, 10, 10, Water Starter, water, 25
+null, null, null, null, 5, 5, 5, 5, Target Dummy, null, -325

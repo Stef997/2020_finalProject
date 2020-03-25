@@ -23,6 +23,8 @@ public class FightBox {
     public Monster monster;
     public Monster target;
 
+    public MonsterInfoBox monsterInfoBox;
+
     private Group group;
 
     private GridPane skillPane = new GridPane();
@@ -38,17 +40,27 @@ public class FightBox {
         //Monster used for the fight skill box
         this.monster = monster;
         fightBoxHandler = new FightBoxHandler(this);
-        init();
         createTargetDummy();
+        init();
+
+    }
+    public FightBox(Monster monster, Monster target) throws FileNotFoundException {
+        this.monster = monster;
+        this.target = target;
+        fightBoxHandler = new FightBoxHandler(this);
+        init();
     }
     private void createTargetDummy() throws FileNotFoundException {
         int skillDamage[] = {5, 0, 0, 0};
         target = new Monster(skillDamage, 0, "Target Dummy");
     }
 
-    private void init(){
+    private void init() throws FileNotFoundException {
 
         System.out.println("init ");
+
+        monsterInfoBox = new MonsterInfoBox(monster, target);
+
         background.setImage(backImage);
         background.setFitWidth(600);
         background.setFitHeight(150);
@@ -98,6 +110,8 @@ public class FightBox {
         monster.setHP(monster.getHP() - damage);
         System.out.println(target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
                 + monster.getName() + "(" + monster.getHP() + ")");
+
+
 
     }
     public Group getGroup(){return group;}

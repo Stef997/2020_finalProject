@@ -1,70 +1,52 @@
 package sample;
 
-
-// A Java program for a Server
-
-import java.net.*;
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class Server {
-    //initialize socket and input stream
-    private Socket socket = null;
-    private ServerSocket server = null;
-    private DataInputStream in = null;
 
-    // constructor with port
-    public Server(int port) {
+    public final static int SOCKET_PORT = 13267;  // you may change this
+    public final static String FILE_TO_SEND = "c:/temp/source.pdf";  // you may change this
 
-        FileOutputStream fop = null;
-        File file;
-        // starts server and waits for a connection
+    public static void main (String [] args ) throws IOException {
+        FileInputStream fis = null;
+        BufferedInputStream bis = null;
+        OutputStream os = null;
+        ServerSocket servsock = null;
+        Socket sock = null;
         try {
-            file = new File("c:/Test/output.txt");
-            fop = new FileOutputStream(file);
-
-            if(!file.exists()){
-                file.createNewFile();
-            }
-            server = new ServerSocket(port);
-            System.out.println("Server started");
-
-            System.out.println("Waiting for a client ...");
-
-            socket = server.accept();
-            System.out.println("Client accepted");
-
-            // takes input from the client socket
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
-
-            String line = "";
-
-            // reads message from client until "Over" is sent
-            while (!line.equals("Over")) {
+            servsock = new ServerSocket(SOCKET_PORT);
+            while (true) {
+                System.out.println("Waiting...");
                 try {
-                    line = in.readUTF();
-                    System.out.println(line);
-                    byte[] contentInBytes = line.getBytes();
-                    fop.write(contentInBytes);
-
-                } catch (IOException i) {
-                    System.out.println(i);
+                    sock = servsock.accept();
+                    System.out.println("Accepted connection : " + sock);
+                    // send file
+                    File myFile = new File (FILE_TO_SEND);
+                    byte [] mybytearray  = new byte [(int)myFile.length()];
+                    fis = new FileInputStream(myFile);
+                    bis = new BufferedInputStream(fis);
+                    bis.read(mybytearray,0,mybytearray.length);
+                    os = sock.getOutputStream();
+                    System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
+                    os.write(mybytearray,0,mybytearray.length);
+                    os.flush();
+                    System.out.println("Done.");
+                }
+                finally {
+                    if (bis != null) bis.close();
+                    if (os != null) os.close();
+                    if (sock!=null) sock.close();
                 }
             }
-            System.out.println("Closing connection");
-            fop.flush();
-            fop.close();
-
-            // close connection
-            socket.close();
-            in.close();
-        } catch (IOException i) {
-            System.out.println(i);
+        }
+        finally {
+            if (servsock != null) servsock.close();
         }
     }
-
-    public static void main(String args[]) {
-        Server server = new Server(5000);
-    }
 }
-

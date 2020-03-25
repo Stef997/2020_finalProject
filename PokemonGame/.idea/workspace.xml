@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ccb2c6bc-108a-4453-bba9-b9268516391f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/PokemonGame.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PokemonGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PokemonGame.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background/sprite1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/FightBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/FightBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/FightBoxHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/FightBoxHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/GameInfoBox$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/GameInfoBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/GameInfoBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/Monster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PokemonGame/sample/MonsterImageBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PokemonGame/sample/MonsterImageBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/FightBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/FightBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/FightBoxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/FightBoxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/GameInfoBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GameInfoBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MonsterImageBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MonsterImageBox.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src/sample" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ZbQ4DFZ1o2kayqM6hgUWMdNZzx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PATH_TO_FX$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="13" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="PokemonGame" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\JavaFx\javafx-sdk-11.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ccb2c6bc-108a-4453-bba9-b9268516391f" name="Default Changelist" comment="" />
+      <created>1585105120702</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585105120702</updated>
+      <workItem from="1585105122588" duration="231000" />
+      <workItem from="1585105397777" duration="7338000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="551" y="278" key="#Project_Structure" timestamp="1585105254782">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state x="551" y="278" key="#Project_Structure/0.0.1824.1176@0.0.1824.1176" timestamp="1585105254782" />
+    <state x="414" y="274" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585105964052">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state x="414" y="274" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1824.1176@0.0.1824.1176" timestamp="1585105964052" />
+    <state x="739" y="361" key="FileChooserDialogImpl" timestamp="1585105638145">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state x="739" y="361" key="FileChooserDialogImpl/0.0.1824.1176@0.0.1824.1176" timestamp="1585105638145" />
+    <state width="854" height="75" key="GridCell.Tab.0.bottom" timestamp="1585115052103">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state width="854" height="75" key="GridCell.Tab.0.bottom/0.0.1824.1176@0.0.1824.1176" timestamp="1585115052103" />
+    <state width="854" height="75" key="GridCell.Tab.0.center" timestamp="1585115052103">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state width="854" height="75" key="GridCell.Tab.0.center/0.0.1824.1176@0.0.1824.1176" timestamp="1585115052103" />
+    <state width="854" height="75" key="GridCell.Tab.0.left" timestamp="1585115052103">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state width="854" height="75" key="GridCell.Tab.0.left/0.0.1824.1176@0.0.1824.1176" timestamp="1585115052103" />
+    <state width="854" height="75" key="GridCell.Tab.0.right" timestamp="1585115052103">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state width="854" height="75" key="GridCell.Tab.0.right/0.0.1824.1176@0.0.1824.1176" timestamp="1585115052103" />
+    <state x="439" y="194" key="SettingsEditor" timestamp="1585105812957">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state x="439" y="194" key="SettingsEditor/0.0.1824.1176@0.0.1824.1176" timestamp="1585105812957" />
+    <state x="1031" y="375" width="672" height="678" key="search.everywhere.popup" timestamp="1585109836599">
+      <screen x="0" y="0" width="1824" height="1176" />
+    </state>
+    <state x="1031" y="375" width="672" height="678" key="search.everywhere.popup/0.0.1824.1176@0.0.1824.1176" timestamp="1585109836599" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PokemonGame$Main.ic" NAME="Main Coverage Results" MODIFIED="1585105802986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
