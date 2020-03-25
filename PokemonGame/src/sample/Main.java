@@ -12,23 +12,36 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
     private static BorderPane bp;
 
     public void start(Stage primaryStage) throws Exception {
-        String skills[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
-        int skillDamage[] = {10, 10, 5, 25};
-        Monster waterType = new Monster(skills, skillDamage, 45, "Water Starter", "water");
+        ArrayList<Skill> skillArrayList1 = new ArrayList<>();
+        for(int i = 0; i < 3; i++){
+            Skill skill = new Skill("Skill " + Integer.toString(i+1), 10);
+            skillArrayList1.add(skill);
 
-        String skills1[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
-        int skillDamage1[] = {10, 10, 5, 25};
-        Monster fireType = new Monster(skills, skillDamage, 45, "Fire Starter", "fire");
+        }
+        Monster waterType = new Monster(skillArrayList1, 45, "Water Starter", "water");
 
-        String skills2[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
-        int skillDamage2[] = {10, 10, 5, 25};
-        Monster grassType = new Monster(skills, skillDamage, 45, "Grass Starter", "grass");
+        ArrayList<Skill> skillArrayList2 = new ArrayList<>();
+        for(int i = 0; i < 3; i++){
+            Skill skill = new Skill("Skill " + Integer.toString(i+1), 10);
+            skillArrayList1.add(skill);
+
+        }
+        Monster fireType = new Monster(skillArrayList2,45, "Fire Starter", "fire");
+
+        ArrayList<Skill> skillArrayList3 = new ArrayList<>();
+        for(int i = 0; i < 3; i++){
+            Skill skill = new Skill("Skill " + Integer.toString(i+1), 10);
+            skillArrayList1.add(skill);
+
+        }
+        Monster grassType = new Monster(skillArrayList3, 45, "Grass Starter", "grass");
 
         FightBox fb = new FightBox(waterType);
         IOMenu ioMenu = new IOMenu(fb,primaryStage);
@@ -46,20 +59,16 @@ public class Main extends Application {
         bp.setMinHeight(700);
         bp.setMinWidth(900);
 
-        bp.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                bp.setBottom(null);
-                sp.getChildren().remove(1);
-                sp.getChildren().add(ioMenu.fightBox.monsterInfoBox.getGroup());
-                bp.setBottom(ioMenu.fightBox.getGroup());
-            }
+        bp.setOnMouseClicked(event -> {
+            bp.setBottom(null);
+            sp.getChildren().remove(1);
+            sp.getChildren().add(ioMenu.fightBox.monsterInfoBox.getGroup());
+            bp.setBottom(ioMenu.fightBox.getGroup());
         });
 
         bp.setTop(ioMenu.getGroup());
         bp.setCenter(sp);
         bp.setBottom(ioMenu.fightBox.getGroup());
-
 
         Scene scene = new Scene(bp);
         primaryStage.setScene(scene);

@@ -16,7 +16,6 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.Group;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,7 +47,6 @@ public class MonsterInfoBox {
     }
 
     public void init(){
-        System.out.println("init ");
         background.setImage(backImage);
         background.setFitWidth(250);
         background.setFitHeight(70);

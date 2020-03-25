@@ -4,13 +4,12 @@ import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Monster {
 
     private Image monsterImage;
-    private String skills[] = new String[4];
-    private int skillDamage[] = new int[4];
-
+    private ArrayList<Skill> skillsArrayList;
     private final Image FIRETYPE = new Image(new FileInputStream("images/sprite1.png"));
     private final Image WATERTYPE = new Image(new FileInputStream("images/WaterStarter-1.png.png"));
     private final Image GRASSTYPE = new Image(new FileInputStream("images/GrassStart-1.png.png"));
@@ -22,19 +21,30 @@ public class Monster {
     private String type;
 
 
-    public Monster(String skills[], int skillDamage[], int HP, String name, String type) throws FileNotFoundException {
+    public Monster(ArrayList skills, int HP, String name, String type) throws FileNotFoundException {
         this.name = name;
-        this.skills = skills;
-        this.skillDamage = skillDamage;
+        this.skillsArrayList = skills;
         this.type = type;
         this.HP = HP;
         imageInit();
     }
 
-    public Monster(int skillDamage[], int HP, String name) throws FileNotFoundException {
+    public Monster(String[] skills, int[] skillDamage, int HP, String name, String type) throws FileNotFoundException {
         this.name = name;
-        this.skillDamage = skillDamage;
+        for(int i = 0; i < 3; i++){
+            this.skillsArrayList.add(new Skill(skills[i], skillDamage[i]));
+        }
+        this.type = type;
         this.HP = HP;
+        imageInit();
+    }
+
+    public Monster(int[] skillDamage, int HP, String name) throws FileNotFoundException {
+        this.name = name;
+        this.HP = HP;
+        for(int i = 0; i < 3; i++){
+            this.skillsArrayList.add(new Skill("Test", skillDamage[i]));
+        }
         imageInit();
     }
 
@@ -57,23 +67,21 @@ public class Monster {
     public int getHP(){
         return this.HP;
     }
-    public int[] getSkillDamage(){
-        return this.skillDamage;
-    }
     public String getName(){
         return this.name;
     }
-    public String[] getSkills(){
-        return this.skills;
-    }
+    public ArrayList<Skill> getSkills(){ return this.skillsArrayList;}
 
     public void setHP(int HP){
         this.HP = HP;
     }
+
     public String toString(){
         // Skill names, skill damage, name,0ty0e, HP
-        return skills[0] + ", " + skills[1] + ", " + skills[2] + ", " + skills[3] + ", " +
-                skillDamage[0] + ", " +  skillDamage[1] + ", " + skillDamage[2] + ", " + skillDamage[3] + ", " +
+        return skillsArrayList.get(0) + ", " + skillsArrayList.get(1) + ", " +
+                skillsArrayList.get(2) + ", " + skillsArrayList.get(3) + ", " +
+                skillsArrayList.get(0).getDamage() + ", " + skillsArrayList.get(1).getDamage() + ", " +
+                skillsArrayList.get(2).getDamage() + ", " + skillsArrayList.get(3).getDamage() + ", " +
                 name + ", " + type + ", " + HP;
     }
 
