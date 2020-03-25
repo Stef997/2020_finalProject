@@ -24,7 +24,7 @@ import java.io.FileNotFoundException;
 public class MonsterInfoBox {
     public static int maxHP = 45;
     public Monster monster;
-    public Monster target;
+    private Monster target;
 
     private Group group;
 
@@ -63,6 +63,9 @@ public class MonsterInfoBox {
 
 
         //Need to update Progressbar
+
+
+
         progressBar.setPrefWidth(170);
         progressBar.setProgress(calculateProgressBar(monster));
         //Need to update Progresssbar
@@ -132,11 +135,11 @@ public class MonsterInfoBox {
     }
     public Group getGroup() {return group;}
 
-    public double calculateProgressBar(@NotNull Monster m){
-            double hP = m.getHP();
-            double percent = hP/maxHP;
-            System.out.println(hP);
-            System.out.println(percent);
+    public double calculateProgressBar(Monster m){
+        double hP = m.getHP();
+        double percent = hP/maxHP;
+        //System.out.println(hP);
+        //System.out.println(percent);
         return percent;
     }
     class ColoredProgressBar extends ProgressBar {

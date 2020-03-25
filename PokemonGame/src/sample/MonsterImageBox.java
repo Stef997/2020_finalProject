@@ -34,6 +34,7 @@ public class MonsterImageBox {
         myMonster.setFitWidth(150);
         myMonster.setLayoutX(0);
         myMonster.setLayoutY(-50);
+
         group = new Group(myMonster, targetMonster);
 
     }

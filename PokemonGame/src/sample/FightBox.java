@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -18,14 +17,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-public class FightBox {
+public class FightBox implements Runnable{
 
     public Monster monster;
     public Monster target;
 
-    public MonsterInfoBox monsterInfoBox;
-
     private Group group;
+    private GameInfoBox gameInfoBox = new GameInfoBox();
+    private String infoText = "";
+    public MonsterInfoBox monsterInfoBox;
 
     private GridPane skillPane = new GridPane();
     private FightBoxHandler fightBoxHandler;
@@ -39,30 +39,38 @@ public class FightBox {
     public FightBox(Monster monster) throws FileNotFoundException {
         //Monster used for the fight skill box
         this.monster = monster;
-        fightBoxHandler = new FightBoxHandler(this);
         createTargetDummy();
-        init();
+        fightBoxHandler = new FightBoxHandler(this);
+        run();
 
     }
     public FightBox(Monster monster, Monster target) throws FileNotFoundException {
+        //Monster used for the fight skill box
         this.monster = monster;
         this.target = target;
         fightBoxHandler = new FightBoxHandler(this);
-        init();
+        run();
     }
     private void createTargetDummy() throws FileNotFoundException {
         int skillDamage[] = {5, 0, 0, 0};
-        target = new Monster(skillDamage, 0, "Target Dummy");
+        this.target = new Monster(skillDamage, 0, "Target Dummy");
     }
-    private void init() throws FileNotFoundException {
+
+    @Override
+    public void run(){
+        try {
+            System.out.println("Yo");
+            monsterInfoBox = new MonsterInfoBox(monster, target);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("init ");
-
-        monsterInfoBox = new MonsterInfoBox(monster, target);
-
         background.setImage(backImage);
         background.setFitWidth(600);
         background.setFitHeight(150);
+
+
 
         for(int i = 0; i < skillButton.length; i++){
             skillButton[i] = new Button(monster.getSkills()[i]);
@@ -103,14 +111,29 @@ public class FightBox {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((4));
-        System.out.println(randomNum);
+        //System.out.println(randomNum);
 
         int damage = target.getSkillDamage()[randomNum];
         monster.setHP(monster.getHP() - damage);
-        System.out.println(target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
-                + monster.getName() + "(" + monster.getHP() + ")");
-
+        infoText = target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
+                + monster.getName() + "(" + monster.getHP() + ")";
     }
     public Group getGroup(){return group;}
+
+    public void setGroup(Group newGroup){group = newGroup;}
+
+    public GameInfoBox getGameInfoBox(){return gameInfoBox;}
+
+    public GridPane getSkillPane(){return skillPane;}
+
+    public ImageView getBackground(){return background;}
+
+    public Text getMonsterName(){return monsterName;}
+
+    public void setInfo(String text){infoText = text;}
+
+    public void setGameInfoBox(GameInfoBox gameInfoBox){
+        group = gameInfoBox.getGroup(infoText);
+    }
 
 }

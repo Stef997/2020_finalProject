@@ -1,10 +1,9 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,8 +15,9 @@ import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
-    public void start(Stage primaryStage) throws Exception {
+    private static BorderPane bp;
 
+    public void start(Stage primaryStage) throws Exception {
         String skills[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
         int skillDamage[] = {10, 10, 5, 25};
         Monster waterType = new Monster(skills, skillDamage, 45, "Water Starter", "water");
@@ -34,13 +34,15 @@ public class Main extends Application {
         IOMenu ioMenu = new IOMenu(fb,primaryStage);
 
         MonsterImageBox monsterImage = new MonsterImageBox(ioMenu.fightBox.monster, ioMenu.fightBox.target);
-
         FightBackground back = new FightBackground();
 
-        BorderPane bp = new BorderPane();
-        StackPane sp = new StackPane();
+        bp = new BorderPane();
         bp.setBackground(back.background);
-        bp.setTop(ioMenu.getGroup());
+        StackPane sp = new StackPane();
+
+        sp.getChildren().add(monsterImage.getGroup());
+        sp.getChildren().add(ioMenu.fightBox.monsterInfoBox.getGroup());
+
         bp.setMinHeight(700);
         bp.setMinWidth(900);
 
@@ -54,13 +56,15 @@ public class Main extends Application {
             }
         });
 
-        sp.getChildren().add(monsterImage.getGroup());
-        sp.getChildren().add(ioMenu.fightBox.monsterInfoBox.getGroup());
+        bp.setTop(ioMenu.getGroup());
         bp.setCenter(sp);
         bp.setBottom(ioMenu.fightBox.getGroup());
+
 
         Scene scene = new Scene(bp);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public static BorderPane getBp(){return bp;}
 }

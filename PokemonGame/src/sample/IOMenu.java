@@ -7,8 +7,6 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-
 public class IOMenu {
 
     private Group group = new Group();
