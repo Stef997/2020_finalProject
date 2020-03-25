@@ -8,15 +8,12 @@ import java.net.Socket;
 
 public class Client {
 
-    public final static int SOCKET_PORT = 13267;      // you may change this
-    public final static String SERVER = "127.0.0.1";  // localhost
+    public final static int SOCKET_PORT = 13267;      // Port
+    public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
     public final static String
-            FILE_TO_RECEIVED = "saves/monsterSave.txt";  // you may change this, I give a
-    // different name because i don't want to
-    // overwrite the one used by server...
+            FILE_TO_RECEIVE = "cloudsaves/monsterSave.txt";  //
 
-    public final static int FILE_SIZE = 6022386; // file size temporary hard coded
-    // should bigger than the file to be downloaded
+    public final static int SIZE = 6022386; // hard coded size
 
     public static void main (String [] args ) throws IOException {
         int bytesRead;
@@ -29,23 +26,22 @@ public class Client {
             System.out.println("Connecting...");
 
             // receive file
-            byte [] mybytearray  = new byte [FILE_SIZE];
+            byte [] byteArray  = new byte [SIZE];
             InputStream is = sock.getInputStream();
-            fos = new FileOutputStream(FILE_TO_RECEIVED);
+            fos = new FileOutputStream(FILE_TO_RECEIVE);
             bos = new BufferedOutputStream(fos);
-            bytesRead = is.read(mybytearray,0,mybytearray.length);
+            bytesRead = is.read(byteArray,0,byteArray.length);
             current = bytesRead;
 
             do {
                 bytesRead =
-                        is.read(mybytearray, current, (mybytearray.length-current));
+                        is.read(byteArray, current, (byteArray.length-current));
                 if(bytesRead >= 0) current += bytesRead;
             } while(bytesRead > -1);
 
-            bos.write(mybytearray, 0 , current);
+            bos.write(byteArray, 0 , current);
             bos.flush();
-            System.out.println("File " + FILE_TO_RECEIVED
-                    + " downloaded (" + current + " bytes read)");
+            System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
         }
         finally {
             if (fos != null) fos.close();

@@ -45,6 +45,7 @@ public class IOMenu {
         menu.getItems().addAll(load, save, cloudLoad, cloudSave);
         menuBar.getMenus().addAll(menu);
         group.getChildren().add(menuBar);
+        menuBar.prefWidthProperty().bind(mainStage.widthProperty());
     }
 
     public FightBox getFightBox(){

@@ -71,6 +71,7 @@ public class Main extends Application {
         bp.setCenter(sp);
         bp.setBottom(ioMenu.fightBox.getGroup());
 
+
         Scene scene = new Scene(bp);
         primaryStage.setScene(scene);
         primaryStage.show();

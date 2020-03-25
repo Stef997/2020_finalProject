@@ -10,8 +10,8 @@ import java.net.Socket;
 
 public class Server {
 
-    public final static int SOCKET_PORT = 13267;  // you may change this
-    public final static String FILE_TO_SEND = "saves/monsterSave.txt";  // you may change this
+    public final static int SOCKET_PORT = 13267;  // Port
+    public final static String FILE_TO_SEND = "saves/monsterSave.txt";
 
     public static void main (String [] args ) throws IOException {
         FileInputStream fis = null;
