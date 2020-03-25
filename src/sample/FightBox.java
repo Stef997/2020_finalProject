@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -18,12 +17,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-public class FightBox {
+public class FightBox implements Runnable{
 
     public Monster monster;
     public Monster target;
 
     private Group group;
+    private GameInfoBox gameInfoBox = new GameInfoBox();
+    private String infoText = "";
 
     private GridPane skillPane = new GridPane();
     private FightBoxHandler fightBoxHandler;
@@ -38,7 +39,7 @@ public class FightBox {
         //Monster used for the fight skill box
         this.monster = monster;
         fightBoxHandler = new FightBoxHandler(this);
-        init();
+        run();
         createTargetDummy();
     }
     private void createTargetDummy() throws FileNotFoundException {
@@ -46,7 +47,8 @@ public class FightBox {
         target = new Monster(skillDamage, 0, "Target Dummy");
     }
 
-    private void init(){
+    @Override
+    public void run(){
 
         System.out.println("init ");
         background.setImage(backImage);
@@ -92,14 +94,29 @@ public class FightBox {
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((4));
-        System.out.println(randomNum);
+        //System.out.println(randomNum);
 
         int damage = target.getSkillDamage()[randomNum];
         monster.setHP(monster.getHP() - damage);
-        System.out.println(target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
-                + monster.getName() + "(" + monster.getHP() + ")");
-
+        infoText = target.getName() + " did " + target.getSkillDamage()[randomNum] + " damage to "
+                + monster.getName() + "(" + monster.getHP() + ")";
     }
     public Group getGroup(){return group;}
+
+    public void setGroup(Group newGroup){group = newGroup;}
+
+    public GameInfoBox getGameInfoBox(){return gameInfoBox;}
+
+    public GridPane getSkillPane(){return skillPane;}
+
+    public ImageView getBackground(){return background;}
+
+    public Text getMonsterName(){return monsterName;}
+
+    public void setInfo(String text){infoText = text;}
+
+    public void setGameInfoBox(GameInfoBox gameInfoBox){
+        group = gameInfoBox.getGroup(infoText);
+    }
 
 }

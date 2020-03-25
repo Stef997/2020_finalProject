@@ -8,31 +8,40 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
+
 public class GameInfoBox{
 
+    private Group group;
+
+    final private BorderPane pane = new BorderPane();
+    final private TextField gameInfo = new TextField();
+    private String infoText = "";
 
     public GameInfoBox(){
         init();
     }
 
     void init(){
-        TextField gameInfo = new TextField();
-
         gameInfo.setEditable(false);
-        gameInfo.setMinHeight(100.0);
-        gameInfo.setMaxWidth(600.0);
+        gameInfo.setMinHeight(150.0);
+        gameInfo.setMinWidth(600.0);
         gameInfo.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID,
                 CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         gameInfo.setFont(Font.loadFont("file:resources/fonts/nintendo.ttf", 10.0));
-        gameInfo.setText("Example game info. Probably output it to system input");
         deselect(gameInfo);
 
-        Group group = new Group(gameInfo);
+        gameInfo.setLayoutX(45.0);
+        gameInfo.setLayoutY(110.0);
+
+        group = new Group(gameInfo);
     }
 
     private void deselect(TextField textField) {
@@ -51,5 +60,10 @@ public class GameInfoBox{
         });
     }
 
+    public Group getGroup(String text){
+        infoText = text;
+        gameInfo.setText(infoText);
+        return group;
+    }
 
 }

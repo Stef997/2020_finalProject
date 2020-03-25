@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,8 @@ import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
+    private static BorderPane bp;
+
     public void start(Stage primaryStage) throws Exception {
 
         String skills[] = {"SKILL1","SKILL2","SKILL3","SKILL4"};
@@ -21,7 +24,7 @@ public class Main extends Application {
         MonsterImageBox monsterImage = new MonsterImageBox(fb.monster, fb.target);
         FightBackground back = new FightBackground();
 
-        BorderPane bp = new BorderPane();
+        bp = new BorderPane();
         bp.setBackground(back.background);
 
         bp.setMinHeight(700);
@@ -35,4 +38,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public static BorderPane getBp(){return bp;}
 }

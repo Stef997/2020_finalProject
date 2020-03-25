@@ -133,8 +133,8 @@ public class MonsterInfoBox {
     public double calculateProgressBar(Monster monster){
         double hP = monster.getHP();
         double percent = hP/maxHP;
-        System.out.println(hP);
-        System.out.println(percent);
+        //System.out.println(hP);
+        //System.out.println(percent);
         return percent;
     }
     class ColoredProgressBar extends ProgressBar {
