@@ -20,8 +20,6 @@ import java.io.FileInputStream;
 public class GameInfoBox{
 
     private Group group;
-
-    final private BorderPane pane = new BorderPane();
     final private TextField gameInfo = new TextField();
     private String infoText = "";
 
