@@ -70,4 +70,10 @@ public class Monster {
     public void setHP(int HP){
         this.HP = HP;
     }
+    public String toString(){
+        // Skill names, skill damage, name,0ty0e, HP
+        return skills[0] + ", " + skills[1] + ", " + skills[2] + ", " + skills[3] + ", " +
+                skillDamage[0] + ", " +  skillDamage[1] + ", " + skillDamage[2] + ", " + skillDamage[3] + ", " +
+                name + ", " + type + ", " + HP;
+    }
 }

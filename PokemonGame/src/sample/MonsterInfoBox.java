@@ -63,9 +63,6 @@ public class MonsterInfoBox {
 
 
         //Need to update Progressbar
-
-
-
         progressBar.setPrefWidth(170);
         progressBar.setProgress(calculateProgressBar(monster));
         //Need to update Progresssbar

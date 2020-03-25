@@ -44,11 +44,16 @@ public class FightBox {
         init();
 
     }
+    public FightBox(Monster monster, Monster target) throws FileNotFoundException {
+        this.monster = monster;
+        this.target = target;
+        fightBoxHandler = new FightBoxHandler(this);
+        init();
+    }
     private void createTargetDummy() throws FileNotFoundException {
         int skillDamage[] = {5, 0, 0, 0};
         target = new Monster(skillDamage, 0, "Target Dummy");
     }
-
     private void init() throws FileNotFoundException {
 
         System.out.println("init ");
