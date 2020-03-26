@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
+import java.util.List;
 
 public class IOMenuHandler implements EventHandler<ActionEvent> {
     private IOMenu menu;
@@ -124,12 +126,30 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                 if (fos != null) fos.close();
                 if (bos != null) bos.close();
                 if (sock != null) sock.close();
+                update();
 
 
             }catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
+    }
+    private void update() throws FileNotFoundException{
+        System.out.println("Updating...");
+
+        /*MonsterInfoBox mons = new MonsterInfoBox(menu.fightBox.monster, menu.fightBox.target);
+        int hp1 = menu.fightBox.monster.getHP();
+        System.out.println("Monster's HP = " + hp1);
+        int hp2 = menu.fightBox.target.getHP();
+        System.out.println("Target's HP = " + hp2);
+        double hptot = hp1;
+        double percent = hptot/45;
+        hptot = hp2;
+        percent = hptot/45;
+        mons.progressBar.setProgress(percent);
+        mons.init();*/
+        menu.fightBox.monsterInfoBox.updateBar();
+        menu.fightBox.monsterInfoBox.updateText();
     }
 
     //Save Function
@@ -172,19 +192,23 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                     //menu.fightBox.monster.HP = (int)data[0];
 
                     String skills[] = {data[0], data[1], data[2], data[3]};
+                    List<String> list = Arrays.asList(skills);
                     int skillDamage[] = {Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7])};
-                    m = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
-                    menu.fightBox.monster.setName(data[8]);
-                    menu.fightBox.monster.setType(data[9]);
-                    menu.fightBox.monster.setHP(Integer.parseInt(data[10]));
+                    //m = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
+                    //menu.fightBox.monster.skillsArrayList = list;
+                    //menu.fightBox.monster.name = data[8];
+                    //menu.fightBox.monster.type = data[9];
+                    menu.fightBox.monster.HP = Integer.parseInt(data[10]);
+                    update();
 
                 } else if (counter == 1) {
                     String skills[] = {data[0], data[1], data[2], data[3]};
                     int skillDamage[] = {Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7])};
-                    m2 = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
-                    menu.fightBox.target.setName(data[8]);
-                    menu.fightBox.target.setType(data[9]);
-                    menu.fightBox.target.setHP(Integer.parseInt(data[10]));
+                    //m2 = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
+                   // menu.fightBox.target.name = data[8];
+                    //menu.fightBox.target.type = data[9];
+                    menu.fightBox.target.HP = Integer.parseInt(data[10]);
+                    update();
 
                 } else {
                     break;
@@ -194,17 +218,19 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
 
 
             }
+            update();
+
             br.close();
-            System.out.println(m.toString());
-            System.out.println(m2.toString());
+            //System.out.println(m.toString());
+            //System.out.println(m2.toString());
             fileReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         //create new instance of fightbox
-        FightBox newFightBox = new FightBox(m, m2);
-        menu.setFightBox(newFightBox);
+        //FightBox newFightBox = new FightBox(m, m2);
+        //menu.setFightBox(newFightBox);
 
         //set IOMenu Fightbox -> new fightbox
         //need to update text and progress bar

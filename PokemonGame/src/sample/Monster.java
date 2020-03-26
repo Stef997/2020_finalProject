@@ -9,14 +9,14 @@ import java.util.List;
 public class Monster {
 
     private Image monsterImage;
-    private List<Skill> skillsArrayList;
+    public List<Skill> skillsArrayList;
     private final Image FIRETYPE = new Image(new FileInputStream("images/sprite1.png"));
     private final Image WATERTYPE = new Image(new FileInputStream("images/WaterStarter-1.png.png"));
     private final Image GRASSTYPE = new Image(new FileInputStream("images/GrassStart-1.png.png"));
     private final Image TARGET_DUMMY = new Image(new FileInputStream("images/unnamed.png"));
 
     //maybe a specialSkill List for abilities like dodge or leer that do 0 damage
-    private int HP;
+    public int HP;
     private String name;
     private String type;
 
