@@ -14,8 +14,9 @@ import java.util.ArrayList;
 public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
-        StackPane initPane = new StackPane();
+        BorderPane initPane = new BorderPane();
         Button startButton = new Button("Start");
+
         startButton.setOnMouseClicked(mouseEvent -> {
             try {
                 MonsterList monsterList = new MonsterList(primaryStage);
@@ -30,7 +31,7 @@ public class Main extends Application {
                                                                     BackgroundPosition.CENTER,
                                                                     new BackgroundSize(700, 900, true,
                                                                                         true,true, true))));
-        initPane.getChildren().addAll(startButton);
+        initPane.setCenter(startButton);
         Scene scene = new Scene(initPane);
         primaryStage.setScene(scene);
         primaryStage.show();

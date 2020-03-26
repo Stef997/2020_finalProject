@@ -1,2 +1,2 @@
-sample.Skill@32b68566, sample.Skill@3960300e, sample.Skill@15c33a0, sample.Skill@222b416d, 20, 15, 5, 30, Fiji, water, 44
-sample.Skill@24306dfb, sample.Skill@1c68d933, sample.Skill@7cc9282d, sample.Skill@4912ef0, 1, 1, 1, 1, Target Dummy, null, 25
+sample.Skill@70106820, sample.Skill@3d5d77ee, sample.Skill@266911a7, sample.Skill@113df0b, 20, 15, 5, 30, Fiji, water, 43
+sample.Skill@7231f661, sample.Skill@24850dce, sample.Skill@4a8fd4d0, sample.Skill@557bb10d, 1, 1, 1, 1, Target Dummy, null, 10
