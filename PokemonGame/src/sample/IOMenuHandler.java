@@ -12,7 +12,7 @@ import java.util.List;
 public class IOMenuHandler implements EventHandler<ActionEvent> {
     private IOMenu menu;
     public String currentFile;
-    public final static int SOCKET_PORT_LOAD = 13267;
+    public final static int SOCKET_PORT_LOAD = 13268;
     public final static int SOCKET_PORT_SAVE = 13267;
     public final static String SERVER = "127.0.0.1";
     public final static String File_to_send = "saves/monsterSave.txt";
@@ -68,6 +68,16 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                 servsock = new ServerSocket((SOCKET_PORT_LOAD));
                 while(true){
                     System.out.println("Waiting...");
+
+                   /* try{
+                        runProcess("C:\\WINDOWS\\pwd.bat");
+                        System.out.println("*********");
+                        runProcess("javac C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.java");
+                        runProcess("java C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.class");
+                    }
+                    catch (Exception err){
+                        err.printStackTrace();
+                    }*/
                     save();
                     sock = servsock.accept();
                     System.out.println("Accepted connection: " + sock);
@@ -137,20 +147,23 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
     private void update() throws FileNotFoundException{
         System.out.println("Updating...");
 
-        /*MonsterInfoBox mons = new MonsterInfoBox(menu.fightBox.monster, menu.fightBox.target);
-        int hp1 = menu.fightBox.monster.getHP();
-        System.out.println("Monster's HP = " + hp1);
-        int hp2 = menu.fightBox.target.getHP();
-        System.out.println("Target's HP = " + hp2);
-        double hptot = hp1;
-        double percent = hptot/45;
-        hptot = hp2;
-        percent = hptot/45;
-        mons.progressBar.setProgress(percent);
-        mons.init();*/
         menu.fightBox.monsterInfoBox.updateBar();
         menu.fightBox.monsterInfoBox.updateText();
     }
+    /*private static void runProcess(String command) throws Exception{
+        Process pro = Runtime.getRuntime().exec(command);
+        printLines(command + "stdout: ", pro.getInputStream());
+        printLines(command + "stderr:", pro.getErrorStream());
+        pro.waitFor();
+        System.out.println(command + " exitValue() " + pro.exitValue());
+    }
+    private static void printLines(String cmd, InputStream ins) throws Exception{
+        String line = null;
+        BufferedReader in = new BufferedReader(new InputStreamReader(ins));
+        while ((line = in.readLine()) != null){
+            System.out.println(cmd + " " + line);
+        }
+    }*/
 
     //Save Function
     public void save() throws IOException {

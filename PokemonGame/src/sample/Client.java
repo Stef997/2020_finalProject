@@ -1,5 +1,3 @@
-package sample;
-
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,10 +6,10 @@ import java.net.Socket;
 
 public class Client {
 
-    public final static int SOCKET_PORT = 13267;      // Port
-    public final static String SERVER = "192.168.0.28";  // localhost is 127.0.0.1,
+    public final static int SOCKET_PORT = 13268;      // Port
+    public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
     public final static String
-            FILE_TO_RECEIVE = "cloudsaves/monsterSave.txt";  //
+            FILE_TO_RECEIVE = "C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\saves\\monsterSave.txt";
 
     public final static int SIZE = 6022386; // hard coded size
 

@@ -1,5 +1,3 @@
-package sample;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +9,7 @@ import java.net.Socket;
 public class Server {
 
     public final static int SOCKET_PORT = 13267;  // Port
-    public final static String FILE_TO_SEND = "saves/monsterSave.txt";
+    public final static String FILE_TO_SEND = "C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\saves\\monsterSave.txt";
 
     public static void main(String[] args) throws IOException {
         FileInputStream fis = null;
