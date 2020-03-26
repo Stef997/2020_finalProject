@@ -7,6 +7,8 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class IOMenu {
 
     private Group group = new Group();
@@ -18,11 +20,13 @@ public class IOMenu {
     private Menu menu = new Menu("Menu");
     public MenuItem load = new MenuItem("Load");
     public MenuItem save = new MenuItem("Save");
+    public MenuItem cloudLoad = new MenuItem("Load from Cloud");
+    public MenuItem cloudSave = new MenuItem("Save to Cloud");
 
     public IOMenuHandler menuHandler;
     public FightBox fightBox;
 
-    public IOMenu(FightBox fightBox, Stage mainStage){
+    public IOMenu(FightBox fightBox, Stage mainStage) {
 
         this.fightBox = fightBox;
         this.mainStage = mainStage;
@@ -32,21 +36,27 @@ public class IOMenu {
 
     }
 
-    private void init(){
+    private void init() {
 
         load.setOnAction(menuHandler);
         save.setOnAction(menuHandler);
-        menu.getItems().addAll(load, save);
+        cloudLoad.setOnAction(menuHandler);
+        cloudSave.setOnAction(menuHandler);
+        menu.getItems().addAll(load, save, cloudLoad, cloudSave);
         menuBar.getMenus().addAll(menu);
         group.getChildren().add(menuBar);
+        menuBar.prefWidthProperty().bind(mainStage.widthProperty());
     }
-    public FightBox getFightBox(){
+
+    public FightBox getFightBox() {
         return this.fightBox;
     }
-    public void setFightBox(FightBox fightBox){
+
+    public void setFightBox(FightBox fightBox) {
         this.fightBox = fightBox;
     }
-    public Group getGroup(){
+
+    public Group getGroup() {
         return this.group;
     }
 }
