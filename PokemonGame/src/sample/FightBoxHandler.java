@@ -19,7 +19,7 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
         if(e.getSource() == fightBox.skillButton[0]){
-            BorderPane bp = Main.getBp();
+            BorderPane bp = MonsterList.getBp();
             fightBox.target.setHP(fightBox.target.getHP() - fightBox.monster.getSkills().get(0).getDamage());
             String text = fightBox.monster.getName() + " did " + fightBox.monster.getSkills().get(0).getDamage() + " damage to "
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")";
@@ -28,7 +28,7 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
             sleep(bp);
 
         }else if(e.getSource() == fightBox.skillButton[1]){
-            BorderPane bp = Main.getBp();
+            BorderPane bp = MonsterList.getBp();
             fightBox.target.setHP(fightBox.target.getHP() - fightBox.monster.getSkills().get(1).getDamage());
             String text = fightBox.monster.getName() + " did " + fightBox.monster.getSkills().get(1).getDamage() + " damage to "
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")";
@@ -37,7 +37,7 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
             sleep(bp);
 
         } else if(e.getSource() == fightBox.skillButton[2]){
-            BorderPane bp = Main.getBp();
+            BorderPane bp = MonsterList.getBp();
             fightBox.target.setHP(fightBox.target.getHP() - fightBox.monster.getSkills().get(2).getDamage());
             String text = fightBox.monster.getName() + " did " + fightBox.monster.getSkills().get(2).getDamage()+ " damage to "
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")";
@@ -46,7 +46,7 @@ public class FightBoxHandler implements EventHandler<ActionEvent> {
             sleep(bp);
 
         }else if(e.getSource() == fightBox.skillButton[3]){
-            BorderPane bp = Main.getBp();
+            BorderPane bp = MonsterList.getBp();
             fightBox.target.setHP(fightBox.target.getHP() - fightBox.monster.getSkills().get(3).getDamage());
             String text = fightBox.monster.getName() + " did " + fightBox.monster.getSkills().get(3).getDamage() + " damage to "
                     + fightBox.target.getName() + "(" + fightBox.target.getHP() + ")";

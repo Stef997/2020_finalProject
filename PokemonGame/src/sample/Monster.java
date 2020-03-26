@@ -1,15 +1,15 @@
 package sample;
 
 import javafx.scene.image.Image;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Monster {
 
     private Image monsterImage;
-    private ArrayList<Skill> skillsArrayList;
+    private List<Skill> skillsArrayList;
     private final Image FIRETYPE = new Image(new FileInputStream("images/sprite1.png"));
     private final Image WATERTYPE = new Image(new FileInputStream("images/WaterStarter-1.png.png"));
     private final Image GRASSTYPE = new Image(new FileInputStream("images/GrassStart-1.png.png"));
@@ -21,7 +21,7 @@ public class Monster {
     private String type;
 
 
-    public Monster(ArrayList skills, int HP, String name, String type) throws FileNotFoundException {
+    public Monster(List skills, int HP, String name, String type) throws FileNotFoundException {
         this.name = name;
         this.skillsArrayList = skills;
         this.type = type;
@@ -64,17 +64,26 @@ public class Monster {
     public Image getMonsterImage(){
         return this.monsterImage;
     }
+
     public int getHP(){
         return this.HP;
     }
+
     public String getName(){
         return this.name;
     }
-    public ArrayList<Skill> getSkills(){ return this.skillsArrayList;}
+
+    public List<Skill> getSkills(){ return this.skillsArrayList;}
+
+    public String getType() { return type; }
 
     public void setHP(int HP){
         this.HP = HP;
     }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setType(String type) { this.type = type; }
 
     public String toString(){
         // Skill names, skill damage, name,0ty0e, HP

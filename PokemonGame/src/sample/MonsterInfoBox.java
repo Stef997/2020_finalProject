@@ -1,13 +1,8 @@
 package sample;
 
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -16,29 +11,27 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.Group;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class MonsterInfoBox {
+
     public static int maxHP = 45;
-    public Monster monster;
-    private Monster target;
-
-    private Group group;
-
-    final private Image backImage = new Image(new FileInputStream("background/textbox.png"));
-    final private ImageView background = new ImageView();
-    final private ImageView background1 = new ImageView();
-
-    private static final String RED_BAR    = "red-bar";
-    private static final String GREEN_BAR  = "green-bar";
-    private static final String[] barColorStyleClasses = { RED_BAR, GREEN_BAR };
-
     public ProgressBar progressBar = new ColoredProgressBar("green-bar",  0.8);
     public ProgressBar progressBar1 = new ColoredProgressBar("green-bar",  0.8);
     public Text hpText;
     public Text hpText2;
+    public Monster monster;
+
+    private Monster target;
+    private Group group;
+
+    final private Image backImage = new Image(new FileInputStream("background/textbox.png"));
+    final private ImageView background = new ImageView();final private ImageView background1 = new ImageView();
+
+    private static final String RED_BAR    = "red-bar";
+    private static final String GREEN_BAR  = "green-bar";
+    private static final String[] barColorStyleClasses = { RED_BAR, GREEN_BAR };
 
     public MonsterInfoBox(Monster monster, Monster target) throws FileNotFoundException {
         this.monster = monster;

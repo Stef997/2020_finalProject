@@ -51,7 +51,9 @@ public class FightBox implements Runnable{
 
     private void createTargetDummy() throws FileNotFoundException {
         ArrayList<Skill> skills = new ArrayList<>();
-        skills.add(new Skill("Test", 1));
+        for(int i = 0; i < 4; i++){
+            skills.add(new Skill("Test", 1));
+        }
         this.target = new Monster(skills, 45, "Target Dummy", null);
     }
 

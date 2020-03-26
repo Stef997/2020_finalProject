@@ -174,17 +174,17 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                     String skills[] = {data[0], data[1], data[2], data[3]};
                     int skillDamage[] = {Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7])};
                     m = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
-                    menu.fightBox.monster.name = data[8];
-                    menu.fightBox.monster.type = data[9];
-                    menu.fightBox.monster.HP = Integer.parseInt(data[10]);
+                    menu.fightBox.monster.setName(data[8]);
+                    menu.fightBox.monster.setType(data[9]);
+                    menu.fightBox.monster.setHP(Integer.parseInt(data[10]));
 
                 } else if (counter == 1) {
                     String skills[] = {data[0], data[1], data[2], data[3]};
                     int skillDamage[] = {Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7])};
                     m2 = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
-                    menu.fightBox.target.name = data[8];
-                    menu.fightBox.target.type = data[9];
-                    menu.fightBox.target.HP = Integer.parseInt(data[10]);
+                    menu.fightBox.target.setName(data[8]);
+                    menu.fightBox.target.setType(data[9]);
+                    menu.fightBox.target.setHP(Integer.parseInt(data[10]));
 
                 } else {
                     break;
