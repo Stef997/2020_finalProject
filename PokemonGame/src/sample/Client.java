@@ -15,7 +15,7 @@ public class Client {
 
     public final static int SIZE = 6022386; // hard coded size
 
-    public static void main (String [] args ) throws IOException {
+    public static void main(String[] args) throws IOException {
         int bytesRead;
         int current = 0;
         FileOutputStream fos = null;
@@ -26,24 +26,23 @@ public class Client {
             System.out.println("Connecting...");
 
             // receive file
-            byte [] byteArray  = new byte [SIZE];
+            byte[] byteArray = new byte[SIZE];
             InputStream is = sock.getInputStream();
             fos = new FileOutputStream(FILE_TO_RECEIVE);
             bos = new BufferedOutputStream(fos);
-            bytesRead = is.read(byteArray,0,byteArray.length);
+            bytesRead = is.read(byteArray, 0, byteArray.length);
             current = bytesRead;
 
             do {
                 bytesRead =
-                        is.read(byteArray, current, (byteArray.length-current));
-                if(bytesRead >= 0) current += bytesRead;
-            } while(bytesRead > -1);
+                        is.read(byteArray, current, (byteArray.length - current));
+                if (bytesRead >= 0) current += bytesRead;
+            } while (bytesRead > -1);
 
-            bos.write(byteArray, 0 , current);
+            bos.write(byteArray, 0, current);
             bos.flush();
             System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
-        }
-        finally {
+        } finally {
             if (fos != null) fos.close();
             if (bos != null) bos.close();
             if (sock != null) sock.close();

@@ -32,12 +32,12 @@ public class MonsterInfoBox {
     final private ImageView background = new ImageView();
     final private ImageView background1 = new ImageView();
 
-    private static final String RED_BAR    = "red-bar";
-    private static final String GREEN_BAR  = "green-bar";
-    private static final String[] barColorStyleClasses = { RED_BAR, GREEN_BAR };
+    private static final String RED_BAR = "red-bar";
+    private static final String GREEN_BAR = "green-bar";
+    private static final String[] barColorStyleClasses = {RED_BAR, GREEN_BAR};
 
-    public ProgressBar progressBar = new ColoredProgressBar("green-bar",  0.8);
-    public ProgressBar progressBar1 = new ColoredProgressBar("green-bar",  0.8);
+    public ProgressBar progressBar = new ColoredProgressBar("green-bar", 0.8);
+    public ProgressBar progressBar1 = new ColoredProgressBar("green-bar", 0.8);
     public Text hpText;
     public Text hpText2;
 
@@ -47,7 +47,7 @@ public class MonsterInfoBox {
         init();
     }
 
-    public void init(){
+    public void init() {
         System.out.println("init ");
         background.setImage(backImage);
         background.setFitWidth(250);
@@ -63,7 +63,6 @@ public class MonsterInfoBox {
 
 
         //Need to update Progressbar
-
 
 
         progressBar.setPrefWidth(170);
@@ -93,8 +92,8 @@ public class MonsterInfoBox {
         //need to update text
 
 
-        hpText = new Text(String.valueOf(monster.getHP())+ "/" + String.valueOf(maxHP));
-        hpText2 = new Text(String.valueOf(target.getHP())+ "/" + String.valueOf(maxHP));
+        hpText = new Text(String.valueOf(monster.getHP()) + "/" + String.valueOf(maxHP));
+        hpText2 = new Text(String.valueOf(target.getHP()) + "/" + String.valueOf(maxHP));
 
         name.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 12));
         name.setFill(Color.BLACK);
@@ -121,33 +120,39 @@ public class MonsterInfoBox {
         hBox1.setLayoutX(470);
         hBox1.setLayoutY(-265);
 
-        group = new Group(background,hBox, vBox, background1, hBox1, vBox1);
+        group = new Group(background, hBox, vBox, background1, hBox1, vBox1);
 
     }
 
-    public void updateBar(){
+    public void updateBar() {
         progressBar.setProgress(calculateProgressBar(monster));
         progressBar1.setProgress(calculateProgressBar(target));
     }
-    public void updateText(){
-        hpText.setText(String.valueOf(monster.getHP())+ "/" + String.valueOf(maxHP));
-        hpText2.setText(String.valueOf(target.getHP())+ "/" + String.valueOf(maxHP));
-    }
-    public Group getGroup() {return group;}
 
-    public double calculateProgressBar(Monster m){
-            double hP = m.getHP();
-            double percent = hP/maxHP;
-            System.out.println(hP);
-            System.out.println(percent);
+    public void updateText() {
+        hpText.setText(String.valueOf(monster.getHP()) + "/" + String.valueOf(maxHP));
+        hpText2.setText(String.valueOf(target.getHP()) + "/" + String.valueOf(maxHP));
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public double calculateProgressBar(Monster m) {
+        double hP = m.getHP();
+        double percent = hP / maxHP;
+        System.out.println(hP);
+        System.out.println(percent);
         return percent;
     }
+
     class ColoredProgressBar extends ProgressBar {
         ColoredProgressBar(String styleClass, double progress) {
             super(progress);
             getStyleClass().add(styleClass);
         }
     }
+
     private void setBarStyleClass(ProgressBar bar, String barStyleClass) {
         bar.getStyleClass().removeAll(barColorStyleClasses);
         bar.getStyleClass().add(barStyleClass);

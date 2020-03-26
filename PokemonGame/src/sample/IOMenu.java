@@ -26,7 +26,7 @@ public class IOMenu {
     public IOMenuHandler menuHandler;
     public FightBox fightBox;
 
-    public IOMenu(FightBox fightBox, Stage mainStage){
+    public IOMenu(FightBox fightBox, Stage mainStage) {
 
         this.fightBox = fightBox;
         this.mainStage = mainStage;
@@ -36,7 +36,7 @@ public class IOMenu {
 
     }
 
-    private void init(){
+    private void init() {
 
         load.setOnAction(menuHandler);
         save.setOnAction(menuHandler);
@@ -48,15 +48,15 @@ public class IOMenu {
         menuBar.prefWidthProperty().bind(mainStage.widthProperty());
     }
 
-    public FightBox getFightBox(){
+    public FightBox getFightBox() {
         return this.fightBox;
     }
 
-    public void setFightBox(FightBox fightBox){
+    public void setFightBox(FightBox fightBox) {
         this.fightBox = fightBox;
     }
 
-    public Group getGroup(){
+    public Group getGroup() {
         return this.group;
     }
 }

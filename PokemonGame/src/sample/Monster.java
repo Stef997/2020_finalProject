@@ -17,9 +17,9 @@ public class Monster {
     private final Image TARGET_DUMMY = new Image(new FileInputStream("images/unnamed.png"));
 
     //maybe a specialSkill List for abilities like dodge or leer that do 0 damage
-    private int HP;
-    private String name;
-    private String type;
+    public int HP;
+    public String name;
+    public String type;
 
 
     public Monster(String skills[], int skillDamage[], int HP, String name, String type) throws FileNotFoundException {
