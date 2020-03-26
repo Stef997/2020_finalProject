@@ -65,38 +65,38 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
         } else if (e.getSource().equals(menu.cloudSave)) {
             //This means this program will work as server and will send to program that will work as client.
             try {
+                //Start a client thread here <--------
                 servsock = new ServerSocket((SOCKET_PORT_LOAD));
-                while(true){
-                    System.out.println("Waiting...");
-
-                   /* try{
-                        runProcess("C:\\WINDOWS\\pwd.bat");
-                        System.out.println("*********");
-                        runProcess("javac C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.java");
-                        runProcess("java C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.class");
-                    }
-                    catch (Exception err){
-                        err.printStackTrace();
-                    }*/
-                    save();
-                    sock = servsock.accept();
-                    System.out.println("Accepted connection: " + sock);
-                    //sends the file
-                    File myFile = new File(File_to_send);
-                    byte[] mybytearray = new byte[(int) myFile.length()];
-                    fis = new FileInputStream(myFile);
-                    bis = new BufferedInputStream(fis);
-                    bis.read(mybytearray, 0, mybytearray.length);
-                    os = sock.getOutputStream();
-                    System.out.println("Sending" + File_to_send + " (" + mybytearray.length + "bytes)");
-                    os.write(mybytearray, 0, mybytearray.length);
-                    os.flush();
-                    System.out.println("Done.");
-                    if (bis != null) bis.close();
-                    if (os != null) os.close();
-                    if (sock != null) sock.close();
-                    if (servsock != null) servsock.close();
+                Thread thread = new Thread(new Client());
+                System.out.println("Waiting...");
+                thread.start();
+               /* try{
+                    runProcess("C:\\WINDOWS\\pwd.bat");
+                    System.out.println("*********");
+                    runProcess("javac C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.java");
+                    runProcess("java C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.class");
                 }
+                catch (Exception err){
+                    err.printStackTrace();
+                }*/
+                save();
+                sock = servsock.accept();
+                System.out.println("Accepted connection: " + sock);
+                //sends the file
+                File myFile = new File(File_to_send);
+                byte[] mybytearray = new byte[(int) myFile.length()];
+                fis = new FileInputStream(myFile);
+                bis = new BufferedInputStream(fis);
+                bis.read(mybytearray, 0, mybytearray.length);
+                os = sock.getOutputStream();
+                System.out.println("Sending" + File_to_send + " (" + mybytearray.length + "bytes)");
+                os.write(mybytearray, 0, mybytearray.length);
+                os.flush();
+                System.out.println("Done.");
+                if (bis != null) bis.close();
+                if (os != null) os.close();
+                if (sock != null) sock.close();
+                if (servsock != null) servsock.close();
 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -107,9 +107,11 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
         else if (e.getSource().equals((menu.cloudLoad))){
             //This means this program will receive the file as client from other program as server.
             try{
+                //Trying to start server here?? <-------
+                Thread thread = new Thread(new Server());
+                thread.start();
                 sock = new Socket(SERVER, SOCKET_PORT_SAVE);
                 System.out.println("Connecting...");
-
                 //Receiving file
                 byte [] mybytearray = new byte[FILE_SIZE];
                 InputStream is = sock.getInputStream();

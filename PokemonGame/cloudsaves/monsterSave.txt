@@ -1,2 +1,2 @@
-sample.Skill@32b68566, sample.Skill@3960300e, sample.Skill@15c33a0, sample.Skill@222b416d, 20, 15, 5, 30, Fiji, water, 44
-sample.Skill@24306dfb, sample.Skill@1c68d933, sample.Skill@7cc9282d, sample.Skill@4912ef0, 1, 1, 1, 1, Target Dummy, null, 25
+sample.Skill@4e6824fa, sample.Skill@400a7ed0, sample.Skill@525f0c5c, sample.Skill@429cc397, 5, 15, 20, 30, Lawn, grass, 45
+sample.Skill@4ddc70ca, sample.Skill@5eb37b5f, sample.Skill@74a4b139, sample.Skill@50805441, 5, 15, 20, 30, Toaster, fire, 45
