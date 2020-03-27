@@ -5,7 +5,7 @@ Stefan Cross, Rene Quezada, Andrew Adamah, Aidan Fitzsimmons
 - https://github.com/Stef997/2020_finalProject
 
 *****************************************************
-Run the main class with JavaFX fully configured for the environment
+Run the main class with JavaFX 13+ fully configured for the environment
 
 Notes on Socket IO
 
