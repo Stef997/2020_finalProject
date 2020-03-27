@@ -12,9 +12,9 @@
       <root url="file://$PATH_TO_FX$" />
       <root url="file:///usr/lib/jvm/jdk-13.0.2/javafx-sdk-13.0.2/lib" />
     </SOURCES>
-    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" />
     <jarDirectory url="file:///usr/lib/jvm/jdk-13.0.2/javafx-sdk-13.0.2/lib" recursive="false" />
-    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" />
     <jarDirectory url="file:///usr/lib/jvm/jdk-13.0.2/javafx-sdk-13.0.2/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" type="SOURCES" />
   </library>
 </component>

@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
     public final static String File_to_receive = "saves/monsterSave.txt";
     public final static int FILE_SIZE = 6022386;
 
+    //Runnable run1 = new;
+
 
     public IOMenuHandler(IOMenu menu) {
         this.menu = menu;
@@ -26,6 +29,12 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent e) {
+
+        Runnable run1 = new Client();
+        Runnable run2 = new Server();
+        Thread cSave = new Thread(run1);
+        Thread cLoad = new Thread(run2);
+
 
         FileInputStream fis = null;
         BufferedInputStream bis = null;
@@ -67,19 +76,13 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
             try {
                 //Start a client thread here <--------
                 servsock = new ServerSocket((SOCKET_PORT_LOAD));
-                Thread thread = new Thread(new Client());
+                //Thread thread = new Thread(new Client());
                 System.out.println("Waiting...");
-                thread.start();
-               /* try{
-                    runProcess("C:\\WINDOWS\\pwd.bat");
-                    System.out.println("*********");
-                    runProcess("javac C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.java");
-                    runProcess("java C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\src\\sample\\Client.class");
-                }
-                catch (Exception err){
-                    err.printStackTrace();
-                }*/
+
+                //thread.start();
+
                 save();
+                cSave.run();
                 sock = servsock.accept();
                 System.out.println("Accepted connection: " + sock);
                 //sends the file
@@ -97,35 +100,39 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                 if (os != null) os.close();
                 if (sock != null) sock.close();
                 if (servsock != null) servsock.close();
+                cSave.stop();
+
 
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
 
-        }
-        else if (e.getSource().equals((menu.cloudLoad))){
+        } else if (e.getSource().equals((menu.cloudLoad))) {
             //This means this program will receive the file as client from other program as server.
-            try{
+            try {
                 //Trying to start server here?? <-------
-                Thread thread = new Thread(new Server());
-                thread.start();
+                //Thread thread = new Thread(new Server());
+                //thread.start();
+
                 sock = new Socket(SERVER, SOCKET_PORT_SAVE);
+                cLoad.run();
                 System.out.println("Connecting...");
+
                 //Receiving file
-                byte [] mybytearray = new byte[FILE_SIZE];
+                byte[] mybytearray = new byte[FILE_SIZE];
                 InputStream is = sock.getInputStream();
                 fos = new FileOutputStream(File_to_receive);
                 bos = new BufferedOutputStream(fos);
-                bytesRead = is.read(mybytearray,0,mybytearray.length);
+                bytesRead = is.read(mybytearray, 0, mybytearray.length);
                 current = bytesRead;
 
-                do{
-                    bytesRead = is.read(mybytearray, current, (mybytearray.length-current));
-                    if(bytesRead >=0) current += bytesRead;
-                } while(bytesRead > -1);
+                do {
+                    bytesRead = is.read(mybytearray, current, (mybytearray.length - current));
+                    if (bytesRead >= 0) current += bytesRead;
+                } while (bytesRead > -1);
 
-                bos.write(mybytearray,0,current);
+                bos.write(mybytearray, 0, current);
                 bos.flush();
                 System.out.println("File" + File_to_receive + " downloaded (" + current + " bytes read)");
                 currentFile = File_to_receive.toString();
@@ -138,34 +145,160 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                 if (fos != null) fos.close();
                 if (bos != null) bos.close();
                 if (sock != null) sock.close();
+                sock.close();
+                cLoad.stop();
                 update();
 
 
-            }catch (IOException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            cLoad.stop();
         }
     }
-    private void update() throws FileNotFoundException{
+
+    class saveThread implements Runnable {
+        public final static int SOCKET_PORT = 13268;      // Port
+        public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
+        public final static String
+                FILE_TO_RECEIVE = "cloudsaves/monsterSave.txt";
+
+        public final static int SIZE = 6022386; // hard coded size
+
+        private volatile boolean exit = false;
+
+        @Override
+        public void run() {
+            int bytesRead;
+            int current = 0;
+            FileOutputStream fos = null;
+            BufferedOutputStream bos = null;
+            Socket sock = null;
+            while (!exit) {
+
+                try {
+                    sock = new Socket(SERVER, SOCKET_PORT);
+                    System.out.println("Connecting...");
+
+                    // receive file
+                    byte[] byteArray = new byte[SIZE];
+                    InputStream is = sock.getInputStream();
+                    fos = new FileOutputStream(FILE_TO_RECEIVE);
+                    bos = new BufferedOutputStream(fos);
+                    bytesRead = is.read(byteArray, 0, byteArray.length);
+                    current = bytesRead;
+
+                    do {
+                        bytesRead =
+                                is.read(byteArray, current, (byteArray.length - current));
+                        if (bytesRead >= 0) current += bytesRead;
+                    } while (bytesRead > -1);
+
+                    bos.write(byteArray, 0, current);
+                    bos.flush();
+                    System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (fos != null) {
+                        try {
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (bos != null) {
+                        try {
+                            bos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (sock != null) {
+                        try {
+                            sock.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+        }
+
+        public void stop() {
+            exit = true;
+        }
+    }
+
+    class loadThread implements Runnable {
+        public final static int SOCKET_PORT = 13267;  // Port
+        public final static String FILE_TO_SEND = "cloudsaves/monsterSave.txt";
+        public volatile boolean exit = false;
+
+        @Override
+        public void run() {
+            while (!exit) {
+                FileInputStream fis = null;
+                BufferedInputStream bis = null;
+                OutputStream os = null;
+                ServerSocket servsock = null;
+                Socket sock = null;
+                try {
+                    servsock = new ServerSocket(SOCKET_PORT);
+                    while (true) {
+                        System.out.println("Waiting...");
+                        try {
+                            sock = servsock.accept();
+                            System.out.println("Accepted connection : " + sock);
+                            // send file
+                            File myFile = new File(FILE_TO_SEND);
+                            byte[] mybytearray = new byte[(int) myFile.length()];
+                            fis = new FileInputStream(myFile);
+                            bis = new BufferedInputStream(fis);
+                            bis.read(mybytearray, 0, mybytearray.length);
+                            os = sock.getOutputStream();
+                            System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
+                            os.write(mybytearray, 0, mybytearray.length);
+                            os.flush();
+                            System.out.println("Done.");
+                        } finally {
+                            if (bis != null) bis.close();
+                            if (os != null) os.close();
+                            if (sock != null) sock.close();
+                        }
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (servsock != null) {
+                        try {
+                            servsock.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+
+        public void stop() {
+            exit = true;
+        }
+    }
+
+    private void update() throws FileNotFoundException {
         System.out.println("Updating...");
 
         menu.fightBox.monsterInfoBox.updateBar();
         menu.fightBox.monsterInfoBox.updateText();
     }
-    /*private static void runProcess(String command) throws Exception{
-        Process pro = Runtime.getRuntime().exec(command);
-        printLines(command + "stdout: ", pro.getInputStream());
-        printLines(command + "stderr:", pro.getErrorStream());
-        pro.waitFor();
-        System.out.println(command + " exitValue() " + pro.exitValue());
-    }
-    private static void printLines(String cmd, InputStream ins) throws Exception{
-        String line = null;
-        BufferedReader in = new BufferedReader(new InputStreamReader(ins));
-        while ((line = in.readLine()) != null){
-            System.out.println(cmd + " " + line);
-        }
-    }*/
 
     //Save Function
     public void save() throws IOException {
@@ -220,7 +353,7 @@ public class IOMenuHandler implements EventHandler<ActionEvent> {
                     String skills[] = {data[0], data[1], data[2], data[3]};
                     int skillDamage[] = {Integer.parseInt(data[4]), Integer.parseInt(data[5]), Integer.parseInt(data[6]), Integer.parseInt(data[7])};
                     //m2 = new Monster(skills, skillDamage, Integer.parseInt((data[10])), data[9], data[8]);
-                   // menu.fightBox.target.name = data[8];
+                    // menu.fightBox.target.name = data[8];
                     //menu.fightBox.target.type = data[9];
                     menu.fightBox.target.HP = Integer.parseInt(data[10]);
                     update();
