@@ -1,25 +1,19 @@
-package sample;
-/***********************************************************************
- * Title: Transfer a file via socket
- * Author: Real Gagnon
- *
- **********************************************************************/
-
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
-public class Client implements Runnable{
+public class Client {
 
     public final static int SOCKET_PORT = 13268;      // Port
     public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
     public final static String
-            FILE_TO_RECEIVE = "cloudsaves/monsterSave.txt";
+            FILE_TO_RECEIVE = "C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\saves\\monsterSave.txt";
 
     public final static int SIZE = 6022386; // hard coded size
 
-    @Override
-    public void run(){
+    public static void main(String[] args) throws IOException {
         int bytesRead;
         int current = 0;
         FileOutputStream fos = null;
@@ -46,34 +40,10 @@ public class Client implements Runnable{
             bos.write(byteArray, 0, current);
             bos.flush();
             System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (sock != null) {
-                try {
-                    sock.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            if (fos != null) fos.close();
+            if (bos != null) bos.close();
+            if (sock != null) sock.close();
         }
     }
 

@@ -37,6 +37,7 @@
       <change beforePath="$PROJECT_DIR$/src/sample/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MonsterImageBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MonsterImageBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585191285025</updated>
       <workItem from="1585191288018" duration="10985000" />
-      <workItem from="1585268179349" duration="5296000" />
+      <workItem from="1585268179349" duration="5321000" />
     </task>
     <servers />
   </component>
