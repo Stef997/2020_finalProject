@@ -1,4 +1,11 @@
 package sample;
+/***********************************************************************
+ * Title: Transfer a file via socket
+ * Author: Real Gagnon
+ * Date: 26-03-2020
+ * Availability: https://www.rgagnon.com/javadetails/java-0542.html
+ *
+ **********************************************************************/
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

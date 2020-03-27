@@ -2,6 +2,8 @@ package sample;
 /***********************************************************************
  * Title: Transfer a file via socket
  * Author: Real Gagnon
+ * Date: 26-03-2020
+ * Availability: https://www.rgagnon.com/javadetails/java-0542.html
  *
  **********************************************************************/
 
@@ -11,10 +13,10 @@ import java.net.UnknownHostException;
 
 public class Client implements Runnable{
 
-    public final static int SOCKET_PORT = 13268;      // Port
+    public final static int SOCKET = 13268;      // Port
     public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
     public final static String
-            FILE_TO_RECEIVE = "cloudsaves/monsterSave.txt";
+            FILE = "saves/monsterSave.txt";
 
     public final static int SIZE = 6022386; // hard coded size
 
@@ -26,13 +28,13 @@ public class Client implements Runnable{
         BufferedOutputStream bos = null;
         Socket sock = null;
         try {
-            sock = new Socket(SERVER, SOCKET_PORT);
+            sock = new Socket(SERVER, SOCKET);
             System.out.println("Connecting...");
 
             // receive file
             byte[] byteArray = new byte[SIZE];
             InputStream is = sock.getInputStream();
-            fos = new FileOutputStream(FILE_TO_RECEIVE);
+            fos = new FileOutputStream(FILE);
             bos = new BufferedOutputStream(fos);
             bytesRead = is.read(byteArray, 0, byteArray.length);
             current = bytesRead;
@@ -45,7 +47,7 @@ public class Client implements Runnable{
 
             bos.write(byteArray, 0, current);
             bos.flush();
-            System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
+            System.out.println("File " + FILE + " downloaded (" + current + " bytes read)");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {

@@ -1,4 +1,11 @@
 package sample;
+/***********************************************************************
+ * Title: Transfer a file via socket
+ * Author: Real Gagnon
+ * Date: 26-03-2020
+ * Availability: https://www.rgagnon.com/javadetails/java-0542.html
+ *
+ **********************************************************************/
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -6,8 +13,8 @@ import java.net.Socket;
 
 public class Server implements Runnable{
 
-    public final static int SOCKET_PORT = 13267;  // Port
-    public final static String FILE_TO_SEND = "cloudsaves/monsterSave.txt";
+    public final static int SOCKET = 13267;  // Port
+    public final static String FILE = "saves/monsterSave.txt";
 
     @Override
     public void run()  {
@@ -17,21 +24,21 @@ public class Server implements Runnable{
         ServerSocket servsock = null;
         Socket sock = null;
         try {
-            servsock = new ServerSocket(SOCKET_PORT);
+            servsock = new ServerSocket(SOCKET);
             while (true) {
                 System.out.println("Waiting...");
                 try {
                     sock = servsock.accept();
                     System.out.println("Accepted connection : " + sock);
                     // send file
-                    File myFile = new File(FILE_TO_SEND);
-                    byte[] mybytearray = new byte[(int) myFile.length()];
+                    File myFile = new File(FILE);
+                    byte[] byteArray = new byte[(int) myFile.length()];
                     fis = new FileInputStream(myFile);
                     bis = new BufferedInputStream(fis);
-                    bis.read(mybytearray, 0, mybytearray.length);
+                    bis.read(byteArray, 0, byteArray.length);
                     os = sock.getOutputStream();
-                    System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
-                    os.write(mybytearray, 0, mybytearray.length);
+                    System.out.println("Sending " + FILE + "(" + byteArray.length + " bytes)");
+                    os.write(byteArray, 0, byteArray.length);
                     os.flush();
                     System.out.println("Done.");
                 } finally {
