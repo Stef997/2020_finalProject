@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
-public class Client {
+public class Client_Backup {
 
     public final static int SOCKET_PORT = 13268;      // Port
     public final static String SERVER = "127.0.0.1";  // localhost is 127.0.0.1,
     public final static String
-            FILE_TO_RECEIVE = "C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\saves\\monsterSave.txt";
-
+            FILE = "saves/monsterSave.txt";
     public final static int SIZE = 6022386; // hard coded size
 
     public static void main(String[] args) throws IOException {
@@ -26,7 +25,7 @@ public class Client {
             // receive file
             byte[] byteArray = new byte[SIZE];
             InputStream is = sock.getInputStream();
-            fos = new FileOutputStream(FILE_TO_RECEIVE);
+            fos = new FileOutputStream(FILE);
             bos = new BufferedOutputStream(fos);
             bytesRead = is.read(byteArray, 0, byteArray.length);
             current = bytesRead;
@@ -39,7 +38,7 @@ public class Client {
 
             bos.write(byteArray, 0, current);
             bos.flush();
-            System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
+            System.out.println("File " + FILE + " downloaded (" + current + " bytes read)");
         } finally {
             if (fos != null) fos.close();
             if (bos != null) bos.close();

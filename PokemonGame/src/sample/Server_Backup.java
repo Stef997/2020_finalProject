@@ -6,11 +6,10 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server_Backup {
 
     public final static int SOCKET_PORT = 13267;  // Port
-    public final static String FILE_TO_SEND = "C:\\Users\\user\\Documents\\GitHub\\2020_finalProject\\PokemonGame\\saves\\monsterSave.txt";
-
+    public final static String FILE = "saves/monsterSave.txt";
     public static void main(String[] args) throws IOException {
         FileInputStream fis = null;
         BufferedInputStream bis = null;
@@ -25,13 +24,13 @@ public class Server {
                     sock = servsock.accept();
                     System.out.println("Accepted connection : " + sock);
                     // send file
-                    File myFile = new File(FILE_TO_SEND);
+                    File myFile = new File(FILE);
                     byte[] mybytearray = new byte[(int) myFile.length()];
                     fis = new FileInputStream(myFile);
                     bis = new BufferedInputStream(fis);
                     bis.read(mybytearray, 0, mybytearray.length);
                     os = sock.getOutputStream();
-                    System.out.println("Sending " + FILE_TO_SEND + "(" + mybytearray.length + " bytes)");
+                    System.out.println("Sending " + FILE + "(" + mybytearray.length + " bytes)");
                     os.write(mybytearray, 0, mybytearray.length);
                     os.flush();
                     System.out.println("Done.");
