@@ -1,3 +1,7 @@
+Stefan Cross, Rene Quezada, Andrew Adamah, Aidan Fitzsimmons
+Stefan Rene SocketIO, MultiThreading
+Aidan Andrew GUI Components JavaIO
+
 Todo List
 
 Create user interface
